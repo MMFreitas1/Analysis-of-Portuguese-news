@@ -1,3 +1,5 @@
+PROJECT UNDER DEVELOPMENT
+
 Install_packages files need Anaconda to run
 
 1) Thanks to Rafael Almeida for creating LeIA library, essentialy using the power of NLTK's VADER module to measure sentiment in Portuguese
