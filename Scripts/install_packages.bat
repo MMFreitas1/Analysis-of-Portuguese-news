@@ -27,10 +27,13 @@ CALL pip install wordcloud
 CALL pip install pillow
 CALL pip install leia-br
 CALL pip install openai
+CALL pip install scipy
+CALL pip install chromadb
+CALL pip install tiktoken
 
 
 REM Download spaCy's Portuguese model
-CALL python -m spacy download pt_core_news_md
+CALL python -m spacy download pt_core_news_lg
 
 REM Run the Python script for NLTK stopwords
 CALL python download_nltk_tools.py

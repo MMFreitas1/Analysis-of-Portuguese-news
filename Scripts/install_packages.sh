@@ -27,9 +27,11 @@ pip install wordcloud
 pip install pillow
 pip install leia-br
 pip install openai
+pip install scipy
+pip install chromadb
 
 # Download the spaCy Portuguese model
-python -m spacy download pt_core_news_md
+python -m spacy download pt_core_news_lg
 
 # Run the Python script for NLTK stopwords
 python download_nltk_tools.py
