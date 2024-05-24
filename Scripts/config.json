@@ -15,7 +15,8 @@
             "output_pt_map": "Images/pt_news_in_words.png",
             "output_sentiment": "Images/pt_news_avg_sentiment_per_category.png",
             "output_proportions": "Images/pt_news_proportion_per_category.png",
-            "output_daily": "Images/pt_news_daily_sentiment.png"
+            "output_daily": "Images/pt_news_daily_sentiment.png",
+            "output_political_party_sentiment": "Images/pt_news_political_party_sentiment.png"
         }
     },
     "api_key": ""
