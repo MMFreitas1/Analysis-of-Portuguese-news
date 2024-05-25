@@ -35,29 +35,25 @@ jobs:
         shell: bash
 
       - name: List files after execution
-        run: ls -la
-
+        run: ls -la Scripts
+      
       - name: Display content of result.ipynb
         if: success()
-        run: cat result.ipynb
+        run: cat Scripts/result.ipynb
         shell: bash
-
+      
       - name: Convert notebook to HTML
         if: success()
         run: |
-          conda run -n nlp-env jupyter nbconvert --to html result.ipynb
+          conda run -n nlp-env jupyter nbconvert --to html Scripts/result.ipynb
         shell: bash
-
+      
       - name: Commit results
         if: success()
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
-          git add result.ipynb result.html
+          git add Scripts/result.ipynb Scripts/result.html
           git commit -m "Daily NLP script run"
           git push
         shell: bash
-
-      - name: Output Jupyter execution log
-        if: failure()
-        run: cat jupyter_output.log
