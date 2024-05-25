@@ -15,17 +15,15 @@ jobs:
       - name: Set up Miniconda
         uses: conda-incubator/setup-miniconda@v2
         with:
-          python-version: 3.11
+          python-version: 3.11  
           auto-update-conda: true
-          environment-file: environment.yml 
-
-      - name: Activate conda environment
-        run: source activate nlp-env
+          environment-file: environment.yml  # Using the environment.yml file
 
       - name: Run Jupyter Notebook
-        run: |
-          jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb
-          jupyter nbconvert --to html result.ipynb
+        run: conda run -n nlp-env --no-capture-output jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb
+
+      - name: Convert notebook to HTML
+        run: conda run -n nlp-env --no-capture-output jupyter nbconvert --to html result.ipynb
 
       - name: Commit results
         run: |
