@@ -15,10 +15,13 @@ jobs:
       - name: Set up Miniconda
         uses: conda-incubator/setup-miniconda@v2
         with:
-          python-version: 3.11 
+          python-version: 3.11  # Specify your Python version
           auto-update-conda: true
           environment-file: environment.yml  # Using the environment.yml file
-          activate-environment: nlp-env  # Activating the environment
+          activate-environment: nlp-env  # Activate the environment
+
+      - name: Verify conda environment
+        run: conda info --envs  # List all conda environments to verify
 
       - name: Run Jupyter Notebook
         run: conda run -n nlp-env --no-capture-output jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb
