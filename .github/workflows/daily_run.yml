@@ -17,11 +17,11 @@ jobs:
         with:
           auto-update-conda: true
 
-      - name: Create and activate environment
-        run: |
-          conda env create -f environment.yml
-          conda activate nlp-env
-          conda info --envs
+      - name: Create environment
+        run: conda env create -f environment.yml
+
+      - name: Verify conda environment
+        run: conda info --envs  # List all conda environments to verify
 
       - name: Run Jupyter Notebook
         run: conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb
