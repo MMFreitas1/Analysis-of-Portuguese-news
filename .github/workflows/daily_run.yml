@@ -23,9 +23,14 @@ jobs:
       - name: List files before execution
         run: ls -la
 
+      - name: Print Jupyter version
+        run: |
+          conda run -n nlp-env jupyter --version
+        shell: bash
+
       - name: Run Jupyter Notebook
         run: |
-          conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb
+          conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb --debug
         shell: bash
 
       - name: List files after execution
