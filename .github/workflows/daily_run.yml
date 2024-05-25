@@ -2,8 +2,8 @@ name: Daily News Web-scrapping Script Run
 
 on:
   schedule:
-    - cron: '0 18 * * *'  # Runs the script daily at 6 p.m. UTC
-  workflow_dispatch:  # Allows manual triggering
+    - cron: '0 18 * * *'
+  workflow_dispatch:
 
 jobs:
   run-nlp-script:
@@ -31,7 +31,7 @@ jobs:
       - name: Run Jupyter Notebook
         run: |
           set -x
-          conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb --debug
+          conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb --debug 2>&1 | tee jupyter_output.log
         shell: bash
 
       - name: List files after execution
@@ -57,3 +57,7 @@ jobs:
           git commit -m "Daily NLP script run"
           git push
         shell: bash
+
+      - name: Output Jupyter execution log
+        if: failure()
+        run: cat jupyter_output.log
