@@ -1,0 +1,10 @@
+name: nlp-env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - requests
+  - pandas
+  - beautifulsoup4
+  - openpyxl
+  - jupyter

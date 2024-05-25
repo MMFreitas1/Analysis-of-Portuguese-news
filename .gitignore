@@ -8,3 +8,6 @@
 !install_packages_MacOS_info.txt
 !Install_packages_Windows_info.txt
 !main.py
+!.github/
+!.github/**
+!environment.yml

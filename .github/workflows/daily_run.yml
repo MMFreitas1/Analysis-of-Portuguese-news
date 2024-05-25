@@ -1,0 +1,36 @@
+name: Daily NLP Script Run
+
+on:
+  schedule:
+    - cron: '0 18 * * *'  # Runs the script daily at 6 p.m. UTC
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  run-nlp-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          python-version: 3.11
+          auto-update-conda: true
+          environment-file: environment.yml 
+
+      - name: Activate conda environment
+        run: source activate nlp-env
+
+      - name: Run Jupyter Notebook
+        run: |
+          jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb
+          jupyter nbconvert --to html result.ipynb
+
+      - name: Commit results
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add result.ipynb result.html
+          git commit -m "Daily NLP script run"
+          git push
