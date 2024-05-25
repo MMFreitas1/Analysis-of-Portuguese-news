@@ -1,4 +1,4 @@
-name: Daily NLP Script Run
+name: Daily News Web-scrapping Script Run
 
 on:
   schedule:
