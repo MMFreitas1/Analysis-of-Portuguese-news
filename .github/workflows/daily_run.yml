@@ -20,10 +20,16 @@ jobs:
       - name: Create conda environment
         run: conda env create -f environment.yml
 
+      - name: List files before execution
+        run: ls -la
+
       - name: Run Jupyter Notebook
         run: |
           conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb
         shell: bash
+
+      - name: List files after execution
+        run: ls -la
 
       - name: Convert notebook to HTML
         if: success()
