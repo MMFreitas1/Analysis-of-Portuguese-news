@@ -1,4 +1,4 @@
-name: Daily News Web-scrapping Script Run
+name: Daily NLP Script Run
 
 on:
   schedule:
@@ -17,22 +17,26 @@ jobs:
         with:
           auto-update-conda: true
 
-      - name: Create environment
+      - name: Create conda environment
         run: conda env create -f environment.yml
 
-      - name: Verify conda environment
-        run: conda info --envs  # List all conda environments to verify
-
       - name: Run Jupyter Notebook
-        run: conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb
+        run: |
+          conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb
+        shell: bash
 
       - name: Convert notebook to HTML
-        run: conda run -n nlp-env jupyter nbconvert --to html result.ipynb
+        if: success()
+        run: |
+          conda run -n nlp-env jupyter nbconvert --to html result.ipynb
+        shell: bash
 
       - name: Commit results
+        if: success()
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
           git add result.ipynb result.html
           git commit -m "Daily NLP script run"
           git push
+        shell: bash
