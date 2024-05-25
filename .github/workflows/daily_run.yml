@@ -23,9 +23,9 @@ jobs:
       - name: List files before execution
         run: ls -la
 
-      - name: Print Jupyter version
+      - name: Verify notebook file exists
         run: |
-          conda run -n nlp-env jupyter --version
+          if [ ! -f Scripts/web_scrapping.ipynb ]; then echo "Notebook not found!"; exit 1; fi
         shell: bash
 
       - name: Run Jupyter Notebook
@@ -35,6 +35,11 @@ jobs:
 
       - name: List files after execution
         run: ls -la
+
+      - name: Display content of result.ipynb
+        if: success()
+        run: cat result.ipynb
+        shell: bash
 
       - name: Convert notebook to HTML
         if: success()
