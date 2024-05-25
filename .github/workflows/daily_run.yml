@@ -30,6 +30,7 @@ jobs:
 
       - name: Run Jupyter Notebook
         run: |
+          set -x
           conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb --debug
         shell: bash
 
