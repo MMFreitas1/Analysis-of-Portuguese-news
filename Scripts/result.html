@@ -7757,15 +7757,17 @@ a.anchor-link {
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span><span class="si">}</span><span class="s2"> titles found!</span><span class="se">\n</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">categories</span><span class="p">)</span><span class="si">}</span><span class="s2"> categories found!</span><span class="se">\n</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">descriptions</span><span class="p">)</span><span class="si">}</span><span class="s2"> descriptions found!"</span><span class="p">)</span>
 
+
 <span class="c1">#Resolving mismatched description number if it happens</span>
-<span class="n">number_of_missing_desc</span> <span class="o">=</span> <span class="n">descriptions</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">number_of_missing_desc</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_missing_desc</span><span class="p">):</span>
-        <span class="k">if</span> <span class="s2">""</span> <span class="ow">in</span> <span class="n">descriptions</span><span class="p">:</span>
-            <span class="n">missing_desc_index</span> <span class="o">=</span> <span class="n">descriptions</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
-            <span class="n">descriptions</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">missing_desc_index</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="si">{</span><span class="n">number_of_missing_desc</span><span class="si">}</span><span class="s2"> empty descriptions found! Mismatched descriptions resolved"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"No of descriptions: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">descriptions</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">descriptions</span><span class="p">):</span>
+    <span class="n">number_of_missing_desc</span> <span class="o">=</span> <span class="n">descriptions</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">number_of_missing_desc</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_missing_desc</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s2">""</span> <span class="ow">in</span> <span class="n">descriptions</span><span class="p">:</span>
+                <span class="n">missing_desc_index</span> <span class="o">=</span> <span class="n">descriptions</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+                <span class="n">descriptions</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">missing_desc_index</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="si">{</span><span class="n">number_of_missing_desc</span><span class="si">}</span><span class="s2"> empty descriptions found! Mismatched descriptions resolved"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"No of descriptions: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">descriptions</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7778,12 +7780,9 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>0 titles found!
-0 categories found!
-0 descriptions found!
-
-0 empty descriptions found! Mismatched descriptions resolved
-No of descriptions: 0
+<pre>19 titles found!
+19 categories found!
+19 descriptions found!
 </pre>
 </div>
 </div>
@@ -7850,8 +7849,8 @@ No of descriptions: 0
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>News from 2024-05-27 downloaded!
-0 new headlines added to the file.
-4569 headlines in total.
+19 new headlines added to the file.
+4647 headlines in total.
 </pre>
 </div>
 </div>
