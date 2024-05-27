@@ -26,16 +26,16 @@ jobs:
       - name: Print path for Data/news.xlsx
         run: |
           python -c "
-import json
-import os
+          import json
+          import os
 
-with open('config.json', 'r') as config_file:
-    config = json.load(config_file)
+          with open('config.json', 'r') as config_file:
+              config = json.load(config_file)
 
-base_dir = os.path.abspath(os.path.join(os.getcwd(), '../..', 'Analysis-of-Portuguese-news'))
-filename = os.path.join(base_dir, config['data']['news'])
-print(f'Saving to {filename}')
-"        
+          base_dir = os.path.abspath(os.path.join(os.getcwd(), '../..', 'Analysis-of-Portuguese-news'))
+          filename = os.path.join(base_dir, config['data']['news'])
+          print(f'Saving to {filename}')
+          "        
         shell: bash
 
       - name: Run Jupyter Notebook
