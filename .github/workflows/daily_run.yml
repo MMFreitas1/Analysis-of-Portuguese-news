@@ -36,13 +36,13 @@ jobs:
           filename = os.path.join(base_dir, config['data']['news'])
           print(f'Saving to {filename}')
           "        
-                  shell: bash
+        shell: bash
 
-                - name: Run Jupyter Notebook
-                  run: |
-                    set -x
-                    conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb --debug 2>&1 | tee jupyter_output.log
-                  shell: bash
+      - name: Run Jupyter Notebook
+        run: |
+          set -x
+          conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb --debug 2>&1 | tee jupyter_output.log
+        shell: bash
       
       - name: Display content of result.ipynb
         if: success()
