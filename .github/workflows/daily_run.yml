@@ -28,10 +28,10 @@ jobs:
           python -c "
           import json
           import os
-          
+
           with open('Scripts/config.json', 'r') as config_file:
               config = json.load(config_file)
-          
+
           base_dir = os.path.abspath(os.path.join(os.getcwd(), '../..', 'Analysis-of-Portuguese-news'))
           filename = os.path.join(base_dir, config['data']['news'])
           print(f'Saving to {filename}')
@@ -41,18 +41,18 @@ jobs:
       - name: Run Jupyter Notebook
         run: |
           set -x
-          conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output Scripts/result.ipynb --debug 2>&1 | tee jupyter_output.log
+          conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb --debug 2>&1 | tee jupyter_output.log
         shell: bash
       
       - name: Display content of result.ipynb
         if: success()
-        run: cat Scripts/result.ipynb
+        run: cat result.ipynb
         shell: bash
       
       - name: Convert notebook to HTML
         if: success()
         run: |
-          conda run -n nlp-env jupyter nbconvert --to html Scripts/result.ipynb
+          conda run -n nlp-env jupyter nbconvert --to html result.ipynb
         shell: bash
       
       - name: Commit results
@@ -60,7 +60,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
-          git add -f Scripts/result.ipynb Scripts/result.html Data/news.xlsx
+          git add -f result.ipynb result.html Data/news.xlsx
           git commit -m "Daily NLP script run"
           git push https://$PAT@github.com/MMFreitas1/Analysis-of-Portuguese-news.git
         shell: bash
