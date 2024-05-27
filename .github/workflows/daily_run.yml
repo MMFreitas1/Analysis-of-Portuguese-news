@@ -29,7 +29,7 @@ jobs:
           import json
           import os
 
-          with open('config.json', 'r') as config_file:
+          with open('Scripts/config.json', 'r') as config_file:
               config = json.load(config_file)
 
           base_dir = os.path.abspath(os.path.join(os.getcwd(), '../..', 'Analysis-of-Portuguese-news'))
