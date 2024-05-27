@@ -34,23 +34,23 @@ jobs:
       - name: Run Jupyter Notebook
         run: |
           set -x
-          conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output Scripts/result.ipynb --debug 2>&1 | tee jupyter_output.log
+          conda run -n nlp-env jupyter nbconvert --to notebook --execute Scripts/web_scrapping.ipynb --output result.ipynb --debug 2>&1 | tee jupyter_output.log
         shell: bash
 
       - name: List files after execution
         run: ls -la Scripts
-
+      
       - name: Display content of result.ipynb
         if: success()
         run: cat Scripts/result.ipynb
         shell: bash
-
+      
       - name: Convert notebook to HTML
         if: success()
         run: |
           conda run -n nlp-env jupyter nbconvert --to html Scripts/result.ipynb
         shell: bash
-
+      
       - name: Commit results
         if: success()
         run: |
@@ -62,7 +62,7 @@ jobs:
         shell: bash
         env:
           PAT: ${{ secrets.PAT }}
-
+      
       - name: Output Jupyter execution log
         if: failure()
         run: cat jupyter_output.log
