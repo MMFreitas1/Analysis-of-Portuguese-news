@@ -1,0 +1,34 @@
+# Ignore everything by default
+*
+
+# Do not ignore the .gitignore file itself
+!.gitignore
+
+# Allow README.md
+!README.md
+
+# Allow Data/ and its contents
+!Data/
+!Data/**
+
+# Allow Scripts/ and its contents
+!Scripts/
+!Scripts/**
+
+# Allow Images/ and its contents
+!Images/
+!Images/**
+
+# Allow specific files
+!install_packages_MacOS_info.txt
+!Install_packages_Windows_info.txt
+!main.py
+!environment.yml
+
+# Allow .github/ and its contents
+!.github/
+!.github/**
+
+# Ignore specific large files
+Scripts/Analysis-of-Portuguese-news/Data/chroma.sqlite3
+Scripts/Analysis-of-Portuguese-news/Data/5b36ea9d-666b-4a33-80c1-2e6363c7eb2b/data_level0.bin

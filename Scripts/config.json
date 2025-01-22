@@ -1,0 +1,27 @@
+{
+    "dir": "/Users/freitas/Desktop/Projetos/Analysis-of-Portuguese-news/",
+    "notebooks": {
+        "web_scrapping": "Scripts/web_scrapping.ipynb",
+        "analysis_of_portuguese_news": "Scripts/analysis_of_portuguese_news.ipynb"
+    },
+    "data": {
+        "news": "Data/news.xlsx"
+    },
+    "pictures": {
+        "input": {
+            "input_pt_map": "Images/png-transparent-red-and-green-flag-flag-of-portugal-map-national-flag-portugal-flag-leaf-fictional-character-thumbnail.png"
+        },
+        "output" : {
+            "output_pt_map": "Images/pt_news_in_words.png",
+            "output_sentiment": "Images/pt_news_avg_sentiment_per_category.png",
+            "output_proportions": "Images/pt_news_proportion_per_category.png",
+            "output_daily": "Images/pt_news_daily_sentiment.png",
+            "output_political_party_sentiment": "Images/pt_news_political_party_sentiment.png",
+            "output_soccer_club_number_of_news": "Images/pt_news_soccer_club_number_of_news.png",
+            "output_correlation_with_weather": "Images/pt_news_correlation_with_weather.png",
+            "output_day_of_week_average_sentiment": "Images/pt_news_day_of_week_average_sentiment.png",
+            "output_average_sentiment_yearly_trend": "Images/pt_news_average_sentiment_yearly_trend.png"
+        }
+    },
+    "api_key": ""
+}
