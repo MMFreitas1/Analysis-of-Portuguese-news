@@ -1,0 +1,8 @@
+1) Go to the current source:
+    cd ~/Desktop/Projetos/Analysis-of-Portuguese-news/Scripts
+
+2) Make the Script Executable, run the following command in the terminal:
+    chmod +x install_packages.sh
+
+3) Execute the script by typing the following in the terminal:
+    ./install_packages.sh
