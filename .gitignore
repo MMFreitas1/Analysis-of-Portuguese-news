@@ -24,6 +24,7 @@
 !Install_packages_Windows_info.txt
 !main.py
 !environment.yml
+!Report.pdf
 
 # Allow .github/ and its contents
 !.github/
