@@ -22,7 +22,14 @@ s = SentimentIntensityAnalyzer()
 
 # Function to remove punctuation and lemmatize text
 def lemmatizer(text):
-    """Lemmatizes a given text"""
+    """Lemmatizes a given text without punctuantion and stopwords.
+    
+    Args:
+        @text (str): A string containing the text.
+    
+    Returns:
+        The lemmatized form of the text.
+    """
     
     # Disable components that are not needed for lemmatization
     doc = pt(text.lower(), disable=["morphologizer", "parser", "senter", "attribute_ruler", "ner"])
@@ -39,7 +46,15 @@ def lemmatizer(text):
 
 # Function to remove punctuation and lemmatize text
 def tokenizer(text):
-    """Tokenizes a given text"""
+    """
+    Tokenizes a given text without punctuantion, numbers and stopwords.
+    
+    Args:
+        @text (str): A string containing the text.
+    
+    Returns:
+        The tokenized form of the text.
+    """
     
     # Disable components that are not needed for lemmatization
     doc = pt(text, disable=["morphologizer", "parser", "senter", "attribute_ruler", "ner"])
@@ -55,7 +70,15 @@ def tokenizer(text):
 
 # Function to vectorize text
 def vectorizer(text):
-    """Vectorizes a given text"""
+    """
+    Vectorizes a given text using Spacy's vectorizer.
+    
+    Args:
+        @text (str): A string containing the text.
+    
+    Returns:
+        The text embedding.
+    """
     
     #Creating a document with all titles and descriptions
     doc = pt(text, disable=["morphologizer", "parser", "senter", "attribute_ruler", "ner"])
@@ -69,7 +92,15 @@ def vectorizer(text):
 
 # Function to find sentiment
 def polarizer(sentence):
-    """Finds sentiment compound through the use of LeIA library"""
+    """
+    Finds sentiment compound through the use of LeIA library
+    
+    Args:
+        @sentence (str): A string containing the text.
+    
+    Returns:
+        The overall sentiment score from -1 to 1 (being -1 most negative and 1 most positive sentiment).
+    """
     
     polarity = s.polarity_scores(sentence)
     return polarity["compound"]
@@ -88,6 +119,17 @@ api_key = config["api_key"]
 client_openai = OpenAI(api_key = api_key)
 
 def get_embedding(text, model="text-embedding-ada-002"):
+    """
+    Vectorizes a given text using OpenAI embedding function.
+    
+    Args:
+        @text (str): A string containing the text.
+        @model = 'text_embedding-ada-002' (str): A string containing an OpenAI embedding function - consult OpenAI API documentation.
+
+    Returns:
+        The text embedding.
+    """
+    
     response = client_openai.embeddings.create(
         input=text,
         model=model
@@ -103,6 +145,17 @@ from scipy.spatial import distance
 import numpy as np
 
 def label_score(embedding, label_embeddings):
+    """
+    Compares an embedding with a list of other embeddings (must have the same dimensions) through cosine similarities.
+    
+    Args:
+        @embedding (array): an array containing one embedding.
+        @label_embeddings (list of arrays): a list of arrays containing several embeddings.
+    
+    Returns:
+        The index with the lowest score of cosine_similarity.
+    """
+    
     cosine_similarities = [distance.cosine(embedding, label_embedding) for label_embedding in label_embeddings]
     return np.argmin(cosine_similarities)
 
