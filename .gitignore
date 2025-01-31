@@ -25,6 +25,7 @@
 !main.py
 !environment.yml
 !Report.pdf
+!requirements.txt
 
 # Allow .github/ and its contents
 !.github/
