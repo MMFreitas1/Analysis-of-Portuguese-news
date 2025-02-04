@@ -25,7 +25,7 @@ This research project comprehends a time window of analysis from 16Jan2024 to 16
 * Check if titles are more negative to create an impression
 3) Analyze which soccer club was spoken about the most
 
-There is a github workflow in due corse, that automatically activates the web-scraping script every day @ 7p.m.
+There was a github workflow, that automatically activates the web-scraping script every day @ 7p.m.
 
 Although the scope of the project was intended to be just one year, the web scraping workflow is active for future use.
 
